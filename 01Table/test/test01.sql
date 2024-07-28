@@ -1,0 +1,26 @@
+USE	`dulumary`;
+
+CREATE TABLE `score`(
+	`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(8) NOT NULL,
+    `year` INT NOT NULL,
+    `term` VARCHAR(16) NOT NULL,
+    `title` VARCHAR(4) NOT NULL,
+    `score` TINYINT NOT NULL,
+    `createdAt` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updatedAt` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DESC `score`;  
+
+ALTER TABLE `score` ADD COLUMN `semester` TINYINT NOT NULL AFTER `year`;
+
+ALTER TABLE `score` CHANGE COLUMN `title` `subject` VARCHAR(4) NOT NULL;
+
+-- COLUMN 써도 되고 안써도됨 --
+ALTER TABLE `score` MODIFY COLUMN `name` VARCHAR(32) NOT NULL;
+
+ALTER TABLE `score` MODIFY COLUMN `subject` VARCHAR(16) NOT NULL;
+
+drop table `score`;
+
